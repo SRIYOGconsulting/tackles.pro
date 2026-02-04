@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 // 🧰 Service images (from public/services)
 const acImg = "/services/ac-service.png";
 const electricalImg = "/services/electrical.png";
-const plumbingImg = "/services/plumbing.png";
+const plumbingImg = "/services/plumbing.png"; 
 const paintingImg = "/services/painting.png";
 const carpentryImg = "/services/carpentry.png";
 const flooringImg = "/services/flooring.png";
@@ -13,7 +13,7 @@ const pressureImg = "/services/pressure.png";
 const smartHomeImg = "/services/smart-home.png";
 
 export default function Services() {
-  const navigate = useNavigate();
+  const navigate = useNavigate();  
 
   // Book Button
   const BookButton = () => (
