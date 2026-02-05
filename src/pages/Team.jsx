@@ -11,8 +11,12 @@ const tom = "/team/tom.png";
 const bishnu = "/team/bishnu.png";
 const quiyam = "/team/quiyam.png";
 const sunil = "/team/sunil.png";
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 
+ 
 // Real icons
 const Facebook = () => (
   <i className="fa-brands fa-facebook-f text-white text-lg hover:text-emerald-200"></i>

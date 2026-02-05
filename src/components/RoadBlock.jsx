@@ -27,6 +27,17 @@ const RoadBlock = () => {
     }
   }, []);
 
+  // Auto-close roadblock after 10 seconds
+  useEffect(() => {
+    if (showRoadBlock) {
+      const timer = setTimeout(() => {
+        onClose();
+      }, 10000); // 10 seconds
+
+      return () => clearTimeout(timer);
+    }
+  }, [showRoadBlock, onClose]);
+
   // Hide scroll while roadblock is visible
   useEffect(() => {
     if (showRoadBlock) document.body.classList.add("hideScroll");
@@ -36,7 +47,7 @@ const RoadBlock = () => {
   }, [showRoadBlock]);
 
   // Image error handler: fallback to default
-  const handleImageError = (e) => {
+  const handleImageError = () => {
     // If the current src is not the default, fallback
     if (!imgSrc.includes("default.jpg")) {
       setImgSrc("/roadblock/default/default.jpg");
@@ -53,20 +64,7 @@ const RoadBlock = () => {
           <div className="relative">
             <button
               onClick={onClose}
-              style={{
-                position: "absolute",
-                top: "-10px",
-                right: "-10px",
-                width: "40px",
-                height: "40px",
-                borderRadius: "50%",
-                backgroundColor: "#055d59",
-                color: "white",
-                fontSize: "20px",
-                fontWeight: "bold",
-                border: "none",
-                cursor: "pointer",
-              }}
+              className="absolute -top-2.5 -right-2.5 w-10 h-10 rounded-full bg-[#055d59] text-white text-xl font-bold border-none cursor-pointer hover:bg-[#044a47] transition-colors duration-200 shadow-lg"
             >
               X
             </button>
@@ -75,12 +73,7 @@ const RoadBlock = () => {
               src={imgSrc}
               onError={handleImageError}
               alt="Roadblock"
-              style={{
-                width: "550px",
-                height: "550px",
-                objectFit: "contain",
-                borderRadius: "3%",
-              }}
+              className="w-[550px] h-[550px] object-contain rounded-[3%]"
             />
           </div>
         </div>
