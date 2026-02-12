@@ -85,8 +85,8 @@ export default function Book() {
 
   const filteredServices = form.requiredService
     ? servicesList.filter((s) =>
-        s.toLowerCase().includes(form.requiredService.toLowerCase())
-      )
+      s.toLowerCase().includes(form.requiredService.toLowerCase())
+    )
     : servicesList;
 
   const handleChange = (e) =>
@@ -97,7 +97,7 @@ export default function Book() {
     setShowSuggestions(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (
@@ -115,25 +115,46 @@ export default function Book() {
       return;
     }
 
-    alert("Thank you! Your booking has been noted.");
-    setForm({
-      fullName: "",
-      email: "",
-      startDate: "",
-      endDate: "",
-      shifts: "",
-      priority: "",
-      location: "",
-      requiredService: "",
-      phone: "",
-      budgetCurrency: "AED",
-      budget: "",
-      description: "",
-      locationFlag: flagUAE,
-      phoneFlag: flagUAE,
-    });
+    setLoading(true);
 
-    setLoading(false);
+    try {
+      const response = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Thank you! Your booking has been noted.");
+        setForm({
+          fullName: "",
+          email: "",
+          startDate: "",
+          endDate: "",
+          shifts: "",
+          priority: "",
+          location: "",
+          requiredService: "",
+          phone: "",
+          budgetCurrency: "AED",
+          budget: "",
+          description: "",
+          locationFlag: flagUAE,
+          phoneFlag: flagUAE,
+        });
+      } else {
+        alert(`Error: ${data.message || 'Something went wrong. Please try again.'}`);
+      }
+    } catch (error) {
+      console.error("Booking Error:", error);
+      alert("Network error. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -511,7 +532,7 @@ export default function Book() {
             ></textarea>
           </div>
 
-          
+
           {/* Submit */}
           <div className="sm:col-span-2 flex justify-center mt-4">
             <button

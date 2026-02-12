@@ -1,19 +1,19 @@
 import ServiceCard from "../components/ServiceCard.jsx";
 import { useNavigate } from "react-router-dom";
 
-// 🧰 Service images (from public/services)
-const acImg = "/services/ac-service.png";
-const electricalImg = "/services/electrical.png";
-const plumbingImg = "/services/plumbing.png";
-const paintingImg = "/services/painting.png";
-const carpentryImg = "/services/carpentry.png";
-const flooringImg = "/services/flooring.png";
-const gutterImg = "/services/gutter.png";
-const pressureImg = "/services/pressure.png";
-const smartHomeImg = "/services/smart-home.png";
+// 🧰 Service images (from public/allservice)
+const acImg = "/allservice/ac-service.png";
+const electricalImg = "/allservice/electrical.png";
+const plumbingImg = "/allservice/plumbing.png";
+const paintingImg = "/allservice/painting.png";
+const carpentryImg = "/allservice/carpentry.png";
+const flooringImg = "/allservice/flooring.png";
+const gutterImg = "/allservice/gutter.png";
+const pressureImg = "/allservice/pressure.png";
+const smartHomeImg = "/allservice/smart-home.png";
 
 export default function Services() {
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
 
   // Book Button
   const BookButton = () => (

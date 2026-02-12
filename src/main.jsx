@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { LocationProvider } from "./context/LocationContext.jsx"; 
+import { LocationProvider } from "./context/LocationContext.jsx";
 import "./index.css";
 import App from "./App.jsx";
 
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/about", element: <About /> },
-      { path: "/services", element: <Services /> },
+      { path: "/allservice", element: <Services /> },
       { path: "/contact", element: <Contact /> },
       { path: "/book", element: <Book /> },
       { path: "/gallery", element: <Gallery /> },

@@ -8,3 +8,8 @@
   }
 
   
+  
+  /* Hide floating icons when mobile menu is open */
+  body.mobile-menu-open .floating-socials {
+    display: none;
+  }
