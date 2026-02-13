@@ -1,16 +1,17 @@
 import ServiceCard from "../components/ServiceCard.jsx";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 // 🧰 Service images (from public/allservice)
-const acImg = "/allservice/ac-service.png";
-const electricalImg = "/allservice/electrical.png";
-const plumbingImg = "/allservice/plumbing.png";
-const paintingImg = "/allservice/painting.png";
-const carpentryImg = "/allservice/carpentry.png";
-const flooringImg = "/allservice/flooring.png";
-const gutterImg = "/allservice/gutter.png";
-const pressureImg = "/allservice/pressure.png";
-const smartHomeImg = "/allservice/smart-home.png";
+const acImg = "/services/ac-service.png";
+const electricalImg = "/services/electrical.png";
+const plumbingImg = "/services/plumbing.png";
+const paintingImg = "/services/painting.png";
+const carpentryImg = "/services/carpentry.png";
+const flooringImg = "/services/flooring.png";
+const gutterImg = "/services/gutter.png";
+const pressureImg = "/services/pressure.png";
+const smartHomeImg = "/services/smart-home.png";
 
 export default function Services() {
   const navigate = useNavigate();
@@ -28,6 +29,15 @@ export default function Services() {
 
   return (
     <section className="bg-gradient-to-b from-white via-emerald-50 to-white py-20 px-6 sm:px-12 lg:px-20">
+      <Helmet>
+        <title>Our Services | Tackles Handyman Services</title>
+        <meta name="description" content="Browse our full range of professional handyman services including AC maintenance, electrical repairs, plumbing, painting, carpentry, and more." />
+        <link rel="canonical" href="https://www.tackles.pro/services" />
+        <meta property="og:title" content="Our Services | Tackles Handyman Services" />
+        <meta property="og:description" content="Professional handyman services: AC, electrical, plumbing, painting, carpentry, and more." />
+        <meta property="og:url" content="https://www.tackles.pro/services" />
+        <meta property="og:type" content="website" />
+      </Helmet>
 
       {/* Header */}
       <div className="text-center mb-16">
