@@ -10,10 +10,10 @@ const sydneyImg = "/animationpicture/sydney.avif";
 const acBgImg = "/animationpicture/ac.png";
 const paintImg = "/animationpicture/paint.jpg";
 
-// 🧰 Service images (from public/services)
-const acImg = "/services/ac-service.png";
-const electricalImg = "/services/electrical.png";
-const plumbingImg = "/services/plumbing.png";
+// 🧰 Service images (from public/allservice)
+const acImg = "/allservice/ac-service.png";
+const electricalImg = "/allservice/electrical.png";
+const plumbingImg = "/allservice/plumbing.png";
 
 // 🌐 Icons (from public/floatingicons)
 const whatsappIcon = "/floatingicons/whatsapp.png";
@@ -37,7 +37,7 @@ const Home = () => {
   const { location } = useLocation();
   const [activeSection, setActiveSection] = useState("about");
 
- 
+
 
   const displayLocation =
     location === "San Francisco" ? "San Francisco" : location || "Dubai";
@@ -52,8 +52,8 @@ const Home = () => {
         location === "Dubai"
           ? dubaiImg
           : location === "San Francisco"
-          ? sanfranciscoImg
-          : sydneyImg,
+            ? sanfranciscoImg
+            : sydneyImg,
     },
     {
       id: 2,
@@ -169,7 +169,7 @@ const Home = () => {
               </button>
 
               <button
-                onClick={() => navigate("/services")}
+                onClick={() => navigate("/allservice")}
                 className="border border-emerald-700 text-emerald-900 font-medium 
                   px-6 sm:px-7 py-2.5 rounded-full hover:bg-emerald-50 
                   hover:shadow-md transition-all duration-300"
@@ -205,7 +205,7 @@ const Home = () => {
         </div>
 
         {/* Floating Social Icons */}
-        <div className="fixed right-6 bottom-[5%] flex flex-col items-center gap-3 z-50">
+        <div className="floating-socials fixed right-6 bottom-[5%] flex flex-col items-center gap-3 z-50">
           <a href="https://wa.me/971551234567" target="_blank">
             <img
               src={whatsappIcon}
@@ -298,7 +298,7 @@ const Home = () => {
 
         <div className="mt-16">
           <button
-            onClick={() => navigate("/services")}
+            onClick={() => navigate("/allservice")}
             className="bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-700
       hover:via-emerald-900 text-white px-8 py-3 rounded-lg shadow-lg 
       hover:shadow-emerald-400/40 transition-all duration-300 text-lg font-semibold"
@@ -330,11 +330,10 @@ const Home = () => {
                 onMouseEnter={() => setActiveSection(key)}
               >
                 <button
-                  className={`w-full text-left px-5 py-3 rounded-lg transition-all duration-300 font-semibold text-lg ${
-                    activeSection === key
-                      ? "bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-700 text-white shadow-md"
-                      : "bg-white border border-emerald-100 text-emerald-900 hover:bg-emerald-50"
-                  }`}
+                  className={`w-full text-left px-5 py-3 rounded-lg transition-all duration-300 font-semibold text-lg ${activeSection === key
+                    ? "bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-700 text-white shadow-md"
+                    : "bg-white border border-emerald-100 text-emerald-900 hover:bg-emerald-50"
+                    }`}
                 >
                   {sections[key].title}
                 </button>
