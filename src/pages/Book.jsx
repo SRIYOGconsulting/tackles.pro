@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 // Images from public folder
 const bookingImg = "/booking/booking.png";
@@ -89,8 +90,22 @@ export default function Book() {
     )
     : servicesList;
 
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    // Phone: numbers only
+    if (name === "phone") {
+      const numbersOnly = value.replace(/[^0-9]/g, "");
+      setForm({ ...form, [name]: numbersOnly });
+      return;
+    }
+    // Budget: numbers only
+    if (name === "budget") {
+      const numbersOnly = value.replace(/[^0-9.]/g, "");
+      setForm({ ...form, [name]: numbersOnly });
+      return;
+    }
+    setForm({ ...form, [name]: value });
+  };
 
   const selectService = (service) => {
     setForm({ ...form, requiredService: service });
@@ -159,6 +174,15 @@ export default function Book() {
 
   return (
     <section className="min-h-screen bg-gradient-to-b from-emerald-900 via-emerald-800 to-emerald-700 flex flex-col items-center justify-center py-20 px-6">
+      <Helmet>
+        <title>Book a Service | Tackles Handyman Services</title>
+        <meta name="description" content="Book professional handyman services online. Schedule AC maintenance, plumbing, painting, electrical repairs, and more at your convenience." />
+        <link rel="canonical" href="https://www.tackles.pro/book" />
+        <meta property="og:title" content="Book a Service | Tackles Handyman Services" />
+        <meta property="og:description" content="Schedule professional handyman services quickly and easily." />
+        <meta property="og:url" content="https://www.tackles.pro/book" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <style>{`
         input[type="date"]::-webkit-calendar-picker-indicator {
           position: absolute;

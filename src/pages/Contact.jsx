@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 const contactImg = "/contact/contact.png";
 
 // Placeholder SVG icons
@@ -57,29 +58,120 @@ export default function Contact() {
   const [form, setForm] = useState({
     fullName: "",
     email: "",
+    phone: "",
     city: "",
     message: "",
   });
 
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
+
+  const validate = (field, value) => {
+    const newErrors = { ...errors };
+    switch (field) {
+      case "fullName":
+        if (!value || value.trim().length < 2) {
+          newErrors.fullName = "Name must be at least 2 characters";
+        } else {
+          delete newErrors.fullName;
+        }
+        break;
+      case "email":
+        if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+          newErrors.email = "Enter a valid email address";
+        } else {
+          delete newErrors.email;
+        }
+        break;
+      case "phone":
+        if (value && !/^\d{7,15}$/.test(value.replace(/\s/g, ""))) {
+          newErrors.phone = "Phone must be 7-15 digits (numbers only)";
+        } else {
+          delete newErrors.phone;
+        }
+        break;
+      case "message":
+        if (!value || value.trim().length < 10) {
+          newErrors.message = "Message must be at least 10 characters";
+        } else {
+          delete newErrors.message;
+        }
+        break;
+      default:
+        break;
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    // Phone: numbers only
+    if (name === "phone") {
+      const numbersOnly = value.replace(/[^0-9]/g, "");
+      setForm({ ...form, [name]: numbersOnly });
+      if (touched[name]) validate(name, numbersOnly);
+      return;
+    }
+    setForm({ ...form, [name]: value });
+    if (touched[name]) validate(name, value);
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched({ ...touched, [name]: true });
+    validate(name, value);
   };
 
   // FRONTEND-ONLY submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!form.fullName || !form.message) {
-      alert("Full Name and Message are required!");
-      return;
+    // Validate all fields
+    const allTouched = { fullName: true, email: true, phone: true, message: true };
+    setTouched(allTouched);
+
+    let valid = true;
+    const newErrors = {};
+
+    if (!form.fullName || form.fullName.trim().length < 2) {
+      newErrors.fullName = "Name must be at least 2 characters";
+      valid = false;
+    }
+    if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      newErrors.email = "Enter a valid email address";
+      valid = false;
+    }
+    if (form.phone && !/^\d{7,15}$/.test(form.phone.replace(/\s/g, ""))) {
+      newErrors.phone = "Phone must be 7-15 digits (numbers only)";
+      valid = false;
+    }
+    if (!form.message || form.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+      valid = false;
     }
 
+    setErrors(newErrors);
+
+    if (!valid) return;
+
     alert("Thank you! Your message has been noted.");
-    setForm({ fullName: "", email: "", city: "", message: "" });
+    setForm({ fullName: "", email: "", phone: "", city: "", message: "" });
+    setErrors({});
+    setTouched({});
   };
 
   return (
     <section className="min-h-screen bg-white py-20 px-6 flex flex-col items-center text-gray-800">
+      <Helmet>
+        <title>Contact Us | Tackles Handyman Services</title>
+        <meta name="description" content="Get in touch with Tackles for all your maintenance needs. Call us, email us, or visit our office in Business Bay." />
+        <link rel="canonical" href="https://www.tackles.pro/contact" />
+        <meta property="og:title" content="Contact Us | Tackles Handyman Services" />
+        <meta property="og:description" content="Get in touch with Tackles for all your maintenance needs." />
+        <meta property="og:url" content="https://www.tackles.pro/contact" />
+        <meta property="og:type" content="website" />
+      </Helmet>
 
       {/* HEADER */}
       <div className="max-w-6xl w-full text-center mb-10">
@@ -105,22 +197,55 @@ export default function Contact() {
           </h2>
 
           <form className="grid gap-5" onSubmit={handleSubmit}>
-            <input
-              name="fullName"
-              value={form.fullName}
-              onChange={handleChange}
-              className="border border-emerald-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-600 shadow-inner"
-              placeholder="Full Name"
-              required
-            />
-            <input
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              type="email"
-              className="border border-emerald-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-600 shadow-inner"
-              placeholder="Email Address"
-            />
+            {/* Full Name */}
+            <div>
+              <input
+                name="fullName"
+                value={form.fullName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={`border ${errors.fullName && touched.fullName ? 'border-red-400' : 'border-emerald-200'} rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-600 shadow-inner w-full`}
+                placeholder="Full Name *"
+                required
+              />
+              {errors.fullName && touched.fullName && (
+                <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>
+              )}
+            </div>
+
+            {/* Email */}
+            <div>
+              <input
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                type="email"
+                className={`border ${errors.email && touched.email ? 'border-red-400' : 'border-emerald-200'} rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-600 shadow-inner w-full`}
+                placeholder="Email Address"
+              />
+              {errors.email && touched.email && (
+                <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+              )}
+            </div>
+
+            {/* Phone */}
+            <div>
+              <input
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                type="tel"
+                className={`border ${errors.phone && touched.phone ? 'border-red-400' : 'border-emerald-200'} rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-600 shadow-inner w-full`}
+                placeholder="Phone Number (digits only)"
+              />
+              {errors.phone && touched.phone && (
+                <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
+              )}
+            </div>
+
+            {/* City */}
             <input
               name="city"
               value={form.city}
@@ -128,15 +253,23 @@ export default function Contact() {
               className="border border-emerald-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-600 shadow-inner"
               placeholder="City (Dubai / Sydney / San Francisco)"
             />
-            <textarea
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              className="border border-emerald-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-600 shadow-inner"
-              rows="4"
-              placeholder="Service needed & message"
-              required
-            />
+
+            {/* Message */}
+            <div>
+              <textarea
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={`border ${errors.message && touched.message ? 'border-red-400' : 'border-emerald-200'} rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-600 shadow-inner w-full`}
+                rows="4"
+                placeholder="Service needed & message (min 10 chars) *"
+                required
+              />
+              {errors.message && touched.message && (
+                <p className="text-red-500 text-xs mt-1">{errors.message}</p>
+              )}
+            </div>
 
             <button
               type="submit"
@@ -153,6 +286,7 @@ export default function Contact() {
         <div className="flex justify-center">
           <img
             src={contactImg}
+            alt="Contact Tackles Handyman Services"
             className="w-full max-w-md object-contain drop-shadow-2xl hover:scale-105 transition-all duration-500"
           />
         </div>
@@ -175,18 +309,19 @@ export default function Contact() {
             <iframe
               src="https://maps.google.com/maps?q=G%2001%20Ontario%20Tower%20Business%20Bay&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%" height="100%" className="border-0"
+              title="Tackles Office Location"
             />
           </div>
         </div>
 
-        {/* CONTACT BUTTONS (with SVGs, smaller size, green border, animations) */}
+        {/* CONTACT BUTTONS */}
         <div className="max-w-6xl mx-auto grid sm:grid-cols-3 gap-8 mt-16 px-4">
 
           {/* VISIT */}
           <div className="group bg-white rounded-xl p-4 text-center border-2 border-emerald-900 shadow-md 
                           hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <div className="flex justify-center mb-2"><VisitIcon /></div>
-            <h2 className="text-lg font-semibold text-emerald-900 mb-1">Visit Us</h2>
+            <h3 className="text-lg font-semibold text-emerald-900 mb-1">Visit Us</h3>
             <p className="text-sm leading-relaxed">G 01 Ontario Tower<br />Business Bay</p>
           </div>
 
@@ -195,7 +330,7 @@ export default function Contact() {
             className="group bg-white rounded-xl p-4 text-center border-2 border-emerald-900 shadow-md 
                        hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <div className="flex justify-center mb-2"><EmailIcon /></div>
-            <h2 className="text-lg font-semibold text-emerald-900 mb-1">Email Us</h2>
+            <h3 className="text-lg font-semibold text-emerald-900 mb-1">Email Us</h3>
             <p className="text-sm leading-relaxed">info@tackles.pro</p>
           </a>
 
@@ -204,7 +339,7 @@ export default function Contact() {
             className="group bg-white rounded-xl p-4 text-center border-2 border-emerald-900 shadow-md 
                        hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <div className="flex justify-center mb-2"><CallIcon /></div>
-            <h2 className="text-lg font-semibold text-emerald-900 mb-1">Call Us</h2>
+            <h3 className="text-lg font-semibold text-emerald-900 mb-1">Call Us</h3>
             <p className="text-sm leading-relaxed">+971-55-6165029</p>
           </a>
 

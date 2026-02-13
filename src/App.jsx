@@ -4,12 +4,17 @@ import ScrollToTop from "./components/ScrollToTop";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import RoadBlock from "./components/RoadBlock";
+import BackToTop from "./components/BackToTop";
+import ExitPopup from "./components/ExitPopup";
 
 export default function App() {
   return (
     <>
       {/* Roadblock overlay */}
       <RoadBlock />
+
+      {/* Exit intent popup */}
+      <ExitPopup />
 
       {/* Scrolls to top whenever the route changes */}
       <ScrollToTop />
@@ -24,6 +29,9 @@ export default function App() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Back to top button */}
+      <BackToTop />
     </>
   );
 }

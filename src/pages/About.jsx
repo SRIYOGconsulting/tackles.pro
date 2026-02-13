@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 const aboutImg = "/about/about.png";
 
 import { ShieldCheck, Users, Leaf, Handshake } from "lucide-react";
@@ -35,6 +36,15 @@ export default function About() {
 
   return (
     <section className="bg-gradient-to-b from-white via-emerald-50 to-white py-20 px-6 sm:px-12 lg:px-20">
+      <Helmet>
+        <title>About Us | Tackles Handyman Services</title>
+        <meta name="description" content="Learn about Tackles, an A-grade handyman service company delivering professional plumbing, painting, AC, and flooring solutions." />
+        <link rel="canonical" href="https://www.tackles.pro/about" />
+        <meta property="og:title" content="About Us | Tackles Handyman Services" />
+        <meta property="og:description" content="Learn about Tackles, an A-grade handyman company." />
+        <meta property="og:url" content="https://www.tackles.pro/about" />
+        <meta property="og:type" content="website" />
+      </Helmet>
 
       {/* PAGE TITLE */}
       <div className="text-center mb-14">
@@ -58,11 +68,10 @@ export default function About() {
               <button
                 onMouseEnter={() => setActiveSection(key)}
                 onClick={() => setActiveSection(key)}
-                className={`w-full text-left px-5 py-3 rounded-lg transition-all duration-300 font-semibold text-lg ${
-                  activeSection === key
+                className={`w-full text-left px-5 py-3 rounded-lg transition-all duration-300 font-semibold text-lg ${activeSection === key
                     ? "bg-gradient-to-r from-green-700 via-emerald-700 to-green-600 text-white shadow-md"
                     : "bg-white border border-emerald-100 text-emerald-900 hover:bg-emerald-50"
-                }`}
+                  }`}
               >
                 {sections[key].title}
               </button>

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import { LocationProvider } from "./context/LocationContext.jsx";
 import "./index.css";
 import App from "./App.jsx";
@@ -28,6 +28,10 @@ import Disclaimer from "./pages/Disclaimer.jsx";
 // ⭐ NEW — Feedback Page
 import Feedback from "./pages/Feedback.jsx";
 
+// ⭐ NEW — Blog Pages
+import Blog from "./pages/Blog.jsx";
+import BlogPost from "./pages/BlogPost.jsx";
+
 // 🧭 Router setup
 const router = createBrowserRouter([
   {
@@ -35,7 +39,8 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/about", element: <About /> },
-      { path: "/allservice", element: <Services /> },
+      { path: "/services", element: <Services /> },
+      { path: "/allservice", element: <Navigate to="/services" replace /> },
       { path: "/contact", element: <Contact /> },
       { path: "/book", element: <Book /> },
       { path: "/gallery", element: <Gallery /> },
@@ -55,6 +60,10 @@ const router = createBrowserRouter([
 
       // ⭐ NEW — Feedback Route
       { path: "/feedback", element: <Feedback /> },
+
+      // ⭐ NEW — Blog Routes
+      { path: "/blog", element: <Blog /> },
+      { path: "/blog/:slug", element: <BlogPost /> },
     ],
   },
 ]);

@@ -1,14 +1,16 @@
 import React from "react";
-// Images from public folder
+import { Facebook, Linkedin, Youtube, Github } from "lucide-react";
+
 const logo = "/logo/logo.png";
 
-// SVG Icons from public/icons
-const iconFacebook = "/icons/facebook.svg";
-const iconLinkedIn = "/icons/linkedin.svg";
-const iconYouTube = "/icons/youtube.svg";
-const iconGithub = "/icons/github.svg";
-
 export default function Footer() {
+  const socialLinks = [
+    { icon: Facebook, href: "https://www.facebook.com/TacklesTechnical", label: "Facebook" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/tackles", label: "LinkedIn" },
+    { icon: Youtube, href: "https://www.youtube.com/@TacklesTechnical", label: "YouTube" },
+    { icon: Github, href: "https://github.com/tackles", label: "GitHub" },
+  ];
+
   return (
     <footer className="bg-gradient-to-r from-emerald-950 via-emerald-900 to-green-900 text-gray-200 pt-16 pb-12">
 
@@ -46,31 +48,32 @@ export default function Footer() {
           "
           >
             <p>
-              Professional handyman and maintenance services designed for residential and commercial spaces. 
-              Skilled technicians deliver reliable repair solutions with clean execution, clear communication, 
+              Professional handyman and maintenance services designed for residential and commercial spaces.
+              Skilled technicians deliver reliable repair solutions with clean execution, clear communication,
               and efficient service management for stress free property maintenance.
             </p>
 
             <p>
-              Services include air conditioning maintenance, electrical repairs, plumbing solutions, painting, 
-              flooring, plastering, and routine upkeep. Every task is handled with safety, precision, and 
+              Services include air conditioning maintenance, electrical repairs, plumbing solutions, painting,
+              flooring, plastering, and routine upkeep. Every task is handled with safety, precision, and
               long term performance in mind.
             </p>
           </div>
 
-          {/* SOCIAL ICONS (UPDATED) */}
+          {/* SOCIAL ICONS (LUCIDE-REACT) */}
           <div className="flex items-center gap-4 flex-wrap">
-            {[iconFacebook, iconLinkedIn, iconYouTube, iconGithub].map(
-              (icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="bg-white/10 p-2 rounded-full hover:bg-white/20 shadow-sm transition"
-                >
-                  <img src={icon} className="w-5 h-5" />
-                </a>
-              )
-            )}
+            {socialLinks.map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="bg-white/10 p-2.5 rounded-full hover:bg-white/20 shadow-sm transition-all duration-300 hover:scale-110"
+              >
+                <Icon size={18} className="text-gray-200" />
+              </a>
+            ))}
           </div>
 
         </div>
@@ -93,6 +96,7 @@ export default function Footer() {
                 { name: "Team", href: "/team" },
                 { name: "Testimonials", href: "/testimonials" },
                 { name: "FAQs", href: "/faq" },
+                { name: "Blog", href: "/blog" },
                 { name: "Privacy", href: "/privacy-policy" },
                 { name: "Terms of Service", href: "/terms" },
                 { name: "Disclaimer", href: "/disclaimer" },
