@@ -1,4 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import { Helmet } from "react-helmet";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
 const image1 = "/gallery/image1.png";
 const image2 = "/gallery/image2.png";
 const image3 = "/gallery/image3.png";
@@ -12,79 +16,32 @@ const image10 = "/gallery/image10.png";
 const image11 = "/gallery/image11.png";
 const image12 = "/gallery/image12.png";
 
-
 export default function Gallery() {
-
-  // ⭐ Set tab title
-  useEffect(() => {
-    document.title = "Gallery | Tackles";
-  }, []);
+  const [lightbox, setLightbox] = useState(false);
+  const [imageSrc, setImageSrc] = useState(null);
 
   const images = [
-    {
-      src: image1,
-      desc:
-        "Fresh flooring and white paint paired with natural sunlight and cozy sofa setup.",
-    },
-    {
-      src: image2,
-      desc:
-        "Professional plumbing services including pipe fitting, leakage repair, and sanitary installations.",
-    },
-    {
-      src: image3,
-      desc:
-        "Aesthetic wall designs with color-matched panels and decorative accents.",
-    },
-    {
-      src: image4,
-      desc:
-        "Modern wooden kitchen with quality cabinetry, lighting design, and interior architecture.",
-    },
-    {
-      src: image5,
-      desc:
-        "Expert wall painting services delivering smooth finishes, clean edges, and long-lasting quality.",
-    },
-    {
-      src: image6,
-      desc:
-        "AC cleaning and servicing performed by trained professionals.",
-    },
-    {
-      src: image7,
-      desc:
-        "Smooth paint finishing with polished flooring and clean touch-ups.",
-    },
-    {
-      src: image8,
-      desc:
-        "Reliable electrician services including wiring, lighting installation, and electrical maintenance.",
-    },
-    {
-      src: image9,
-      desc:
-        "Open indoor space with ceiling fixtures and clean interior finishing.",
-    },
-    {
-      src: image10,
-      desc:
-        "Indoor living area featuring ocean view, modern furniture, and premium flooring.",
-    },
-    {
-      src: image11,
-      desc:
-        "Skilled carpentry work including furniture making, wood finishing, and custom installations.",
-    },
-    {
-      src: image12,
-      desc:
-        "Relaxing indoor setup with indoor plants, soft lighting, and stylish sofas.",
-    },
+    { src: image1, desc: "Fresh flooring and white paint paired with natural sunlight and cozy sofa setup." },
+    { src: image2, desc: "Professional plumbing services including pipe fitting, leakage repair, and sanitary installations." },
+    { src: image3, desc: "Aesthetic wall designs with color-matched panels and decorative accents." },
+    { src: image4, desc: "Modern wooden kitchen with quality cabinetry, lighting design, and interior architecture." },
+    { src: image5, desc: "Expert wall painting services delivering smooth finishes, clean edges, and long-lasting quality." },
+    { src: image6, desc: "AC cleaning and servicing performed by trained professionals." },
+    { src: image7, desc: "Smooth paint finishing with polished flooring and clean touch-ups." },
+    { src: image8, desc: "Reliable electrician services including wiring, lighting installation, and electrical maintenance." },
+    { src: image9, desc: "Open indoor space with ceiling fixtures and clean interior finishing." },
+    { src: image10, desc: "Indoor living area featuring ocean view, modern furniture, and premium flooring." },
+    { src: image11, desc: "Skilled carpentry work including furniture making, wood finishing, and custom installations." },
+    { src: image12, desc: "Relaxing indoor setup with indoor plants, soft lighting, and stylish sofas." },
   ];
 
   return (
     <section className="min-h-screen bg-white py-20 px-6 text-gray-800 flex flex-col items-center">
+      <Helmet>
+        <title>Gallery | Tackles</title>
+        <link rel="icon" type="image/png" href="/tackles.png" />
+      </Helmet>
+
       {/* Header */}
       <div className="max-w-5xl text-center mb-14">
         <h1 className="text-5xl font-extrabold text-emerald-900 mb-4 tracking-tight">
@@ -104,13 +61,18 @@ export default function Gallery() {
             key={index}
             className="rounded-xl overflow-hidden bg-white border border-emerald-200 
             shadow-[0_0_20px_rgba(6,95,70,0.18)] hover:shadow-[0_0_32px_rgba(6,95,70,0.28)]
-            transform hover:scale-[1.03] transition-all duration-500 group"
+            transform hover:scale-[1.03] transition-all duration-500 group cursor-pointer"
+            onClick={() => {
+              setLightbox(true);
+              setImageSrc(item.src);
+            }}
           >
             {/* IMAGE */}
             <div className="relative">
               <img
                 src={item.src}
                 alt={`Gallery ${index + 1}`}
+                loading="lazy"
                 className="w-full h-64 object-cover transition-all duration-300 group-hover:opacity-90"
               />
 
@@ -128,6 +90,15 @@ export default function Gallery() {
           </div>
         ))}
       </div>
+
+      {/* Task 14: Render Lightbox */}
+      {lightbox && (
+        <Lightbox
+          open={lightbox}
+          slides={[{ src: imageSrc }]}
+          close={() => setLightbox(false)}
+        />
+      )}
     </section>
   );
 }

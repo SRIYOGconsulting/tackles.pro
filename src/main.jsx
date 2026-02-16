@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import { LocationProvider } from "./context/LocationContext.jsx";
@@ -7,30 +7,27 @@ import App from "./App.jsx";
 
 // 🌍 Pages
 import Home from "./pages/Home.jsx";
-import About from "./pages/About.jsx";
-import Services from "./pages/Services.jsx";
-import Contact from "./pages/Contact.jsx";
-import Book from "./pages/Book.jsx";
-import Gallery from "./pages/Gallery.jsx";
-import Team from "./pages/Team.jsx";
-import Testimonials from "./pages/Testimonials.jsx";
-import FAQ from "./pages/FAQ.jsx";
+const About = lazy(() => import("./pages/About.jsx"));
+const Services = lazy(() => import("./pages/Services.jsx"));
+const Contact = lazy(() => import("./pages/Contact.jsx"));
+const Book = lazy(() => import("./pages/Book.jsx"));
+const Gallery = lazy(() => import("./pages/Gallery.jsx"));
+const Team = lazy(() => import("./pages/Team.jsx"));
+const Testimonials = lazy(() => import("./pages/Testimonials.jsx"));
+const FAQ = lazy(() => import("./pages/FAQ.jsx"));
+const Privacy = lazy(() => import("./pages/Privacy.jsx"));
+const Terms = lazy(() => import("./pages/Terms.jsx"));
+const Disclaimer = lazy(() => import("./pages/Disclaimer.jsx"));
+const Feedback = lazy(() => import("./pages/Feedback.jsx"));
+const Blog = lazy(() => import("./pages/Blog.jsx"));
+const BlogPost = lazy(() => import("./pages/BlogPost.jsx"));
 
-// ⭐ NEW — Privacy Page
-import Privacy from "./pages/Privacy.jsx";
-
-// ⭐ NEW — Terms of Service Page
-import Terms from "./pages/Terms.jsx";
-
-// ⭐ NEW — Disclaimer Page     
-import Disclaimer from "./pages/Disclaimer.jsx";
-
-// ⭐ NEW — Feedback Page
-import Feedback from "./pages/Feedback.jsx";
-
-// ⭐ NEW — Blog Pages
-import Blog from "./pages/Blog.jsx";
-import BlogPost from "./pages/BlogPost.jsx";
+// Lazy Loading Fallback
+const PageLoader = () => (
+  <div className="min-h-[60vh] flex items-center justify-center">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-800"></div>
+  </div>
+);
 
 // 🧭 Router setup
 const router = createBrowserRouter([
@@ -38,32 +35,21 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/about", element: <About /> },
-      { path: "/services", element: <Services /> },
+      { path: "/about", element: <Suspense fallback={<PageLoader />}><About /></Suspense> },
+      { path: "/services", element: <Suspense fallback={<PageLoader />}><Services /></Suspense> },
       { path: "/allservice", element: <Navigate to="/services" replace /> },
-      { path: "/contact", element: <Contact /> },
-      { path: "/book", element: <Book /> },
-      { path: "/gallery", element: <Gallery /> },
-      { path: "/team", element: <Team /> },
-
-      { path: "/testimonials", element: <Testimonials /> },
-      { path: "/faq", element: <FAQ /> },
-
-      // ⭐ NEW — Privacy Route
-      { path: "/privacy-policy", element: <Privacy /> },
-
-      // ⭐ NEW — Terms of Service Route
-      { path: "/terms", element: <Terms /> },
-
-      // ⭐ NEW — Disclaimer Route
-      { path: "/disclaimer", element: <Disclaimer /> },
-
-      // ⭐ NEW — Feedback Route
-      { path: "/feedback", element: <Feedback /> },
-
-      // ⭐ NEW — Blog Routes
-      { path: "/blog", element: <Blog /> },
-      { path: "/blog/:slug", element: <BlogPost /> },
+      { path: "/contact", element: <Suspense fallback={<PageLoader />}><Contact /></Suspense> },
+      { path: "/book", element: <Suspense fallback={<PageLoader />}><Book /></Suspense> },
+      { path: "/gallery", element: <Suspense fallback={<PageLoader />}><Gallery /></Suspense> },
+      { path: "/team", element: <Suspense fallback={<PageLoader />}><Team /></Suspense> },
+      { path: "/testimonials", element: <Suspense fallback={<PageLoader />}><Testimonials /></Suspense> },
+      { path: "/faq", element: <Suspense fallback={<PageLoader />}><FAQ /></Suspense> },
+      { path: "/privacy-policy", element: <Suspense fallback={<PageLoader />}><Privacy /></Suspense> },
+      { path: "/terms", element: <Suspense fallback={<PageLoader />}><Terms /></Suspense> },
+      { path: "/disclaimer", element: <Suspense fallback={<PageLoader />}><Disclaimer /></Suspense> },
+      { path: "/feedback", element: <Suspense fallback={<PageLoader />}><Feedback /></Suspense> },
+      { path: "/blog", element: <Suspense fallback={<PageLoader />}><Blog /></Suspense> },
+      { path: "/blog/:slug", element: <Suspense fallback={<PageLoader />}><BlogPost /></Suspense> },
     ],
   },
 ]);

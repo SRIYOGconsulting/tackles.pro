@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 export default function Disclaimer() {
   useEffect(() => {
@@ -7,6 +8,9 @@ export default function Disclaimer() {
 
   return (
     <div className="min-h-screen bg-white text-gray-800 py-16 px-6">
+      <Helmet>
+        <link rel="icon" type="image/png" href="/tackles.png" />
+      </Helmet>
       <div className="max-w-5xl mx-auto">
 
         {/* TITLE */}
@@ -26,9 +30,9 @@ export default function Disclaimer() {
               General Information
             </h2>
             <p className="leading-relaxed">
-              The information provided on this website (tackles.ae) is for general 
-              informational purposes only. While we make every effort to keep the 
-              information accurate, up to date, and reliable, Tackles does not make 
+              The information provided on this website (tackles.ae) is for general
+              informational purposes only. While we make every effort to keep the
+              information accurate, up to date, and reliable, Tackles does not make
               any guarantees of completeness, accuracy, or suitability of the content.
             </p>
           </div>
@@ -39,10 +43,10 @@ export default function Disclaimer() {
               No Professional Advice
             </h2>
             <p className="leading-relaxed">
-              All content on this website is provided for general understanding and 
-              convenience. Nothing on this site should be considered professional 
-              technical advice. For specific guidance, inspection, or repair 
-              requirements, please consult directly with our certified technicians or 
+              All content on this website is provided for general understanding and
+              convenience. Nothing on this site should be considered professional
+              technical advice. For specific guidance, inspection, or repair
+              requirements, please consult directly with our certified technicians or
               relevant professionals.
             </p>
           </div>
@@ -53,9 +57,9 @@ export default function Disclaimer() {
               External Links Disclaimer
             </h2>
             <p className="leading-relaxed">
-              Our website may contain links to external websites that are not 
-              provided or maintained by Tackles. We do not guarantee the accuracy, 
-              relevance, or completeness of any information found on these external 
+              Our website may contain links to external websites that are not
+              provided or maintained by Tackles. We do not guarantee the accuracy,
+              relevance, or completeness of any information found on these external
               platforms.
             </p>
           </div>
@@ -66,8 +70,8 @@ export default function Disclaimer() {
               Errors & Omissions
             </h2>
             <p className="leading-relaxed">
-              Although we strive to ensure the reliability of all content, unintentional 
-              mistakes or outdated information may occur. Tackles is not responsible for 
+              Although we strive to ensure the reliability of all content, unintentional
+              mistakes or outdated information may occur. Tackles is not responsible for
               any errors, omissions, or inconsistencies present on the website.
             </p>
           </div>
@@ -78,9 +82,9 @@ export default function Disclaimer() {
               Limitation of Liability
             </h2>
             <p className="leading-relaxed">
-              Tackles shall not be held liable for any damages—direct, indirect, 
-              incidental, or consequential—arising from the use or inability to use our 
-              website, services, or information. All actions taken based on our content 
+              Tackles shall not be held liable for any damages—direct, indirect,
+              incidental, or consequential—arising from the use or inability to use our
+              website, services, or information. All actions taken based on our content
               are at the user’s own risk.
             </p>
           </div>
@@ -91,8 +95,8 @@ export default function Disclaimer() {
               Service Availability
             </h2>
             <p className="leading-relaxed">
-              Although we aim to keep the website running smoothly, Tackles does not 
-              guarantee uninterrupted access. Technical issues, updates, or server 
+              Although we aim to keep the website running smoothly, Tackles does not
+              guarantee uninterrupted access. Technical issues, updates, or server
               downtime may temporarily disrupt access to the site.
             </p>
           </div>
@@ -103,8 +107,8 @@ export default function Disclaimer() {
               Updates to This Disclaimer
             </h2>
             <p className="leading-relaxed">
-              Tackles reserves the right to update, modify, or replace this Disclaimer 
-              at any time without prior notice. Users are encouraged to review this page 
+              Tackles reserves the right to update, modify, or replace this Disclaimer
+              at any time without prior notice. Users are encouraged to review this page
               periodically to stay informed of any changes.
             </p>
           </div>
@@ -113,7 +117,7 @@ export default function Disclaimer() {
           <div className="bg-white border border-emerald-200 shadow-md rounded-xl p-6 hover:shadow-lg transition">
             <h2 className="text-2xl font-bold text-emerald-900 mb-4">Contact Us</h2>
             <p className="leading-relaxed">
-              If you have any questions regarding this Disclaimer, feel free to contact us 
+              If you have any questions regarding this Disclaimer, feel free to contact us
               through our official email or contact section on the website.
             </p>
           </div>

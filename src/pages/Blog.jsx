@@ -46,6 +46,7 @@ export default function Blog() {
             <Helmet>
                 <title>Blog | Tackles Handyman Services</title>
                 <meta name="description" content="Expert handyman tips, maintenance guides, and home improvement advice from the Tackles professional team." />
+                <link rel="icon" type="image/png" href="/tackles.png" />
                 <link rel="canonical" href="https://www.tackles.pro/blog" />
                 <meta property="og:title" content="Blog | Tackles Handyman Services" />
                 <meta property="og:description" content="Expert handyman tips and maintenance guides." />
@@ -76,6 +77,7 @@ export default function Blog() {
                             <img
                                 src={post.image}
                                 alt={post.title}
+                                loading="lazy"
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             />
                         </div>
@@ -106,7 +108,8 @@ export default function Blog() {
                             </div>
 
                             <div className="mt-4 flex items-center gap-1 text-emerald-700 text-sm font-semibold group-hover:gap-2 transition-all">
-                                Read More <ArrowRight size={14} />
+                                <span className="flex items-center">Read More</span>
+                                <ArrowRight size={14} className="mt-[1px]" />
                             </div>
                         </div>
                     </article>

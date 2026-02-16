@@ -9,6 +9,7 @@
         <img
           src={image}
           alt={title}
+          loading="lazy"
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
       </div>
@@ -31,7 +32,7 @@
       )}
 
       {/* Hover Glow Overlay */}
-      <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 
+      <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-30 
                       bg-gradient-to-r from-lime-500 to-emerald-600 
                       transition-opacity duration-500 rounded-2xl">
       </div>

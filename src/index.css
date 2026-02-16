@@ -1,15 +1,22 @@
 ﻿@import "tailwindcss";
-.hideScroll {
-    overflow: hidden;
-  }
-  
-  .showScroll {
-    overflow: auto;
-  }
 
-  
-  
-  /* Hide floating icons when mobile menu is open */
-  body.mobile-menu-open .floating-socials {
-    display: none;
-  }
+/* Task 1 & 6: Global cursor pointer for all buttons and clickable elements */
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+.hideScroll {
+  overflow: hidden;
+}
+
+.showScroll {
+  overflow: auto;
+}
+
+
+
+/* Hide floating icons when mobile menu is open */
+body.mobile-menu-open .floating-socials {
+  display: none;
+}

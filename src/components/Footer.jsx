@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Facebook, Linkedin, Youtube, Github } from "lucide-react";
 
 const logo = "/logo/logo.png";
@@ -102,8 +103,8 @@ export default function Footer() {
                 { name: "Disclaimer", href: "/disclaimer" },
               ].map((item) => (
                 <li key={item.name}>
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.href}
                     className="
                       block text-sm px-2 py-1 
                       rounded-md text-gray-300 
@@ -112,7 +113,7 @@ export default function Footer() {
                     "
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

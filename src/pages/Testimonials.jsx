@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // ✅ Added for navigation
+import { Helmet } from "react-helmet";
 
 // ⭐ Testimonial images (from public/testimonials)
 const p1 = "/testimonials/p1.png";
@@ -166,6 +167,9 @@ export default function Testimonials() {
 
   return (
     <section className="bg-white min-h-screen py-20 px-6">
+      <Helmet>
+        <link rel="icon" type="image/png" href="/tackles.png" />
+      </Helmet>
       <div className="max-w-7xl mx-auto">
 
         <h1 className="text-4xl sm:text-5xl font-extrabold text-emerald-800 text-center mb-4">
@@ -188,6 +192,7 @@ export default function Testimonials() {
                 <img
                   src={r.img}
                   alt={r.name}
+                  loading="lazy"
                   className="w-28 h-28 rounded-full object-cover ring-4 ring-emerald-600 shadow-md mb-4"
                 />
                 <h3 className="text-xl font-bold text-emerald-800">{r.name}</h3>

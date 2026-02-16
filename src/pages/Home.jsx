@@ -223,8 +223,8 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Floating Social Icons */}
-        <div className="floating-socials fixed right-6 bottom-[5%] flex flex-col items-center gap-3 z-50">
+        {/* Floating Social Icons — Task 16: Stacked exactly at 80px and 140px bottom */}
+        <div className="floating-socials fixed right-6 bottom-[80px] flex flex-col items-center gap-6 z-50">
           <a href="https://wa.me/971556165029" target="_blank" rel="noopener noreferrer"
             className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform hover:shadow-green-400/60"
           >
@@ -264,6 +264,7 @@ const Home = () => {
               <img
                 src={playstoreBtn}
                 alt="Download on Play Store"
+                loading="lazy"
                 className="h-14 sm:h-16 w-auto rounded-[20px] ring-2 ring-emerald-300 group-hover:ring-emerald-500 transition-all duration-300"
               />
             </a>
@@ -277,6 +278,7 @@ const Home = () => {
               <img
                 src={appleBtn}
                 alt="Download on App Store"
+                loading="lazy"
                 className="h-14 sm:h-16 w-auto rounded-[20px] ring-2 ring-emerald-300 group-hover:ring-emerald-500 transition-all duration-300"
               />
             </a>
@@ -392,7 +394,7 @@ const Home = () => {
               className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center hover:shadow-xl transition-shadow duration-300 border border-emerald-100"
             >
               <div className="w-24 h-24 mb-4 rounded-full bg-gray-100 overflow-hidden shadow-md ring-4 ring-emerald-200">
-                <img src={t.image} className="w-full h-full object-cover" />
+                <img src={t.image} loading="lazy" className="w-full h-full object-cover" />
               </div>
               <p className="text-gray-700 italic mb-4 leading-relaxed">
                 “{t.feedback}”

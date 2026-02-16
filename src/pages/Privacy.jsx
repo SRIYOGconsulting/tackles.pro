@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 export default function PrivacyPolicy() {
   useEffect(() => {
@@ -7,12 +8,15 @@ export default function PrivacyPolicy() {
 
   return (
     <div className="min-h-screen bg-white text-gray-800 py-16 px-6">
+      <Helmet>
+        <link rel="icon" type="image/png" href="/tackles.png" />
+      </Helmet>
       <div className="max-w-5xl mx-auto">
 
         {/* TITLE SECTION */}
         <div className="mb-12">
           <h1 className="text-4xl font-extrabold text-emerald-900 tracking-wide">
-            Privacy 
+            Privacy
           </h1>
           <div className="h-1 w-full bg-emerald-700 rounded-full mt-3 shadow-sm"></div>
         </div>
@@ -29,7 +33,7 @@ export default function PrivacyPolicy() {
               <span className="font-semibold text-emerald-800">tackles.ae</span>.
             </p>
             <p className="mt-3 leading-relaxed">
-              We value your trust and are committed to keeping your personal data safe. 
+              We value your trust and are committed to keeping your personal data safe.
               If you have questions, feel free to reach out anytime.
             </p>
           </div>
@@ -38,12 +42,12 @@ export default function PrivacyPolicy() {
           <div className="bg-white shadow-md border border-emerald-200 rounded-xl p-6 hover:shadow-lg transition-all">
             <h2 className="text-2xl font-bold text-emerald-900 mb-4">Log Files</h2>
             <p className="leading-relaxed">
-              Tackles follows standard procedures of using log files, which record visitors 
+              Tackles follows standard procedures of using log files, which record visitors
               when they browse the website. This includes IP addresses, browser type,
               Internet Service Provider, time stamps, referring pages, and number of clicks.
             </p>
             <p className="mt-3 leading-relaxed">
-              None of this data is personally identifiable. It's used purely for analytics, 
+              None of this data is personally identifiable. It's used purely for analytics,
               site management, and tracking user engagement.
             </p>
           </div>
@@ -52,8 +56,8 @@ export default function PrivacyPolicy() {
           <div className="bg-white shadow-md border border-emerald-200 rounded-xl p-6 hover:shadow-lg transition-all">
             <h2 className="text-2xl font-bold text-emerald-900 mb-4">Cookies & Web Beacons</h2>
             <p className="leading-relaxed">
-              Tackles uses cookies to store visitor preferences and to improve your browsing 
-              experience. These cookies help tailor website content based on your browser 
+              Tackles uses cookies to store visitor preferences and to improve your browsing
+              experience. These cookies help tailor website content based on your browser
               type or previous interactions.
             </p>
           </div>
@@ -64,7 +68,7 @@ export default function PrivacyPolicy() {
               Google DoubleClick DART Cookie
             </h2>
             <p className="leading-relaxed">
-              Google uses DART cookies to serve ads based on your browsing behaviour across 
+              Google uses DART cookies to serve ads based on your browsing behaviour across
               various websites. You can opt out by visiting Google's Ads Privacy Policy page.
             </p>
           </div>
@@ -75,7 +79,7 @@ export default function PrivacyPolicy() {
               Third-Party Tracking Technologies
             </h2>
             <p className="leading-relaxed">
-              Third-party advertisers may use cookies, JavaScript, or tracking pixels. These 
+              Third-party advertisers may use cookies, JavaScript, or tracking pixels. These
               tools automatically receive your IP address and help measure ad performance.
             </p>
             <p className="mt-3 leading-relaxed">
@@ -89,12 +93,12 @@ export default function PrivacyPolicy() {
               Third-Party Privacy Policies
             </h2>
             <p className="leading-relaxed">
-              Our Privacy Policy does not apply to other websites or advertisers. We 
-              recommend reviewing their individual privacy policies to understand their 
+              Our Privacy Policy does not apply to other websites or advertisers. We
+              recommend reviewing their individual privacy policies to understand their
               data handling practices.
             </p>
             <p className="mt-3 leading-relaxed">
-              You may disable cookies through your browser settings. Each browser offers 
+              You may disable cookies through your browser settings. Each browser offers
               different configuration options.
             </p>
           </div>
@@ -105,8 +109,8 @@ export default function PrivacyPolicy() {
               Children’s Information
             </h2>
             <p className="leading-relaxed">
-              Tackles does not knowingly collect personal information from children under 
-              the age of 13. If you believe such information has been shared with us, please 
+              Tackles does not knowingly collect personal information from children under
+              the age of 13. If you believe such information has been shared with us, please
               contact us immediately and we will remove it promptly.
             </p>
           </div>
@@ -117,7 +121,7 @@ export default function PrivacyPolicy() {
               Online Privacy Policy Only
             </h2>
             <p className="leading-relaxed">
-              This Privacy Policy applies only to information collected through our 
+              This Privacy Policy applies only to information collected through our
               website and does not apply to offline or non-website interactions.
             </p>
           </div>
@@ -126,7 +130,7 @@ export default function PrivacyPolicy() {
           <div className="bg-white shadow-md border border-emerald-200 rounded-xl p-6 hover:shadow-lg transition-all">
             <h2 className="text-2xl font-bold text-emerald-900 mb-4">Consent</h2>
             <p className="leading-relaxed">
-              By using our website, you consent to our Privacy Policy and agree to its 
+              By using our website, you consent to our Privacy Policy and agree to its
               terms and conditions.
             </p>
           </div>

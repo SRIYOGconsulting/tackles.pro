@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 export default function Feedback() {
   useEffect(() => {
@@ -53,6 +54,9 @@ export default function Feedback() {
 
   return (
     <section className="min-h-screen bg-white py-20 px-6">
+      <Helmet>
+        <link rel="icon" type="image/png" href="/tackles.png" />
+      </Helmet>
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <header className="text-center mb-12">
@@ -212,6 +216,34 @@ export default function Feedback() {
                 className="hidden"
               />
             </label>
+            {/* Task 7: Display file name or image preview */}
+            {form.photo && (
+              <div className="mt-4 p-4 border border-emerald-200 rounded-xl bg-emerald-50 flex items-center gap-4 animate-fadeIn">
+                <div className="w-16 h-16 rounded-lg overflow-hidden border border-emerald-300 shadow-sm bg-white">
+                  <img
+                    src={URL.createObjectURL(form.photo)}
+                    alt="Preview"
+                    className="w-full h-full object-cover"
+                    onLoad={(e) => URL.revokeObjectURL(e.target.src)}
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-semibold text-emerald-900 truncate">
+                    {form.photo.name}
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    {(form.photo.size / 1024).toFixed(1)} KB
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setForm(prev => ({ ...prev, photo: null }))}
+                  className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                >
+                  <XIcon />
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Submit Button */}
@@ -219,17 +251,16 @@ export default function Feedback() {
             <button
               type="submit"
               disabled={isSubmitting || submitted}
-              className={`rounded-lg p-3 font-semibold text-white transition w-full ${
-                submitted
+              className={`rounded-lg p-3 font-semibold text-white transition w-full ${submitted
                   ? "bg-emerald-500 cursor-not-allowed"
                   : "bg-emerald-700 hover:bg-emerald-800"
-              }`}
+                }`}
             >
               {isSubmitting
                 ? "Submitting..."
                 : submitted
-                ? "Submitted"
-                : "Submit Feedback"}
+                  ? "Submitted"
+                  : "Submit Feedback"}
             </button>
           </div>
         </form>

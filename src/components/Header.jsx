@@ -67,7 +67,7 @@ export default function Header() {
     <>
       {/* UPDATE: Clean Top Bar */}
       <div className="bg-emerald-900 text-white py-2 text-xs sm:text-sm font-medium">
-        <div className="container mx-auto px-4 md:px-6 flex flex-col sm:flex-row justify-between items-center gap-2">
+        <div className="max-w-[88%] mx-auto px-4 md:px-6 flex flex-col sm:flex-row justify-between items-center gap-2">
 
           <div className="flex items-center gap-4 sm:gap-6 opacity-90">
             <a href="tel:055-6185029" className="flex items-center gap-2 hover:text-emerald-300 transition-colors">
@@ -105,7 +105,7 @@ export default function Header() {
         className={`sticky top-0 z-50 bg-white transition-all duration-300 ${scrolled ? "shadow-md py-2" : "shadow-sm py-3"
           }`}
       >
-        <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+        <div className="max-w-[88%] mx-auto px-4 md:px-6 flex items-center justify-between">
 
           {/* Logo */}
           <button onClick={handleLogoClick} className="flex items-center gap-3 group">

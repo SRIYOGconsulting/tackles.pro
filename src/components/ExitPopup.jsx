@@ -1,20 +1,18 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 export default function ExitPopup() {
     const [show, setShow] = useState(false);
 
-    const handleMouseLeave = useCallback((e) => {
-        // Only trigger when mouse moves to top of viewport (exit intent)
-        if (e.clientY <= 5 && !sessionStorage.getItem("exit_popup_shown")) {
-            setShow(true);
-            sessionStorage.setItem("exit_popup_shown", "true");
-        }
-    }, []);
-
     useEffect(() => {
-        document.addEventListener("mouseleave", handleMouseLeave);
-        return () => document.removeEventListener("mouseleave", handleMouseLeave);
-    }, [handleMouseLeave]);
+        const handleBeforeUnload = (e) => {
+            // Trigger the native browser "Leave site?" dialog
+            e.preventDefault();
+            e.returnValue = "";
+        };
+
+        window.addEventListener("beforeunload", handleBeforeUnload);
+        return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+    }, []);
 
     if (!show) return null;
 
@@ -37,7 +35,7 @@ export default function ExitPopup() {
                     </h3>
                     <p className="text-gray-600 mb-6 leading-relaxed">
                         Get <span className="font-bold text-emerald-700">10% off</span> your first
-                        handyman service booking. Don't miss out on professional, reliable maintenance!
+                        anime service! Stay and explore our amazing anime collection.
                     </p>
 
                     <a
@@ -47,14 +45,14 @@ export default function ExitPopup() {
               hover:from-emerald-900 hover:to-emerald-700 
               transition-all duration-300 shadow-md hover:shadow-lg"
                     >
-                        Book Now & Save 10%
+                        Stay & Save 10%
                     </a>
 
                     <button
                         onClick={() => setShow(false)}
                         className="mt-3 text-sm text-gray-400 hover:text-gray-600 transition-colors"
                     >
-                        No thanks, I'll pay full price
+                        No thanks, I'll leave
                     </button>
                 </div>
             </div>

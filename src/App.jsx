@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import RoadBlock from "./components/RoadBlock";
 import BackToTop from "./components/BackToTop";
 import ExitPopup from "./components/ExitPopup";
+import Sidekick from "./components/Sidekick";
 
 export default function App() {
   return (
@@ -32,6 +33,9 @@ export default function App() {
 
       {/* Back to top button */}
       <BackToTop />
+
+      {/* Floating sidekick */}
+      <Sidekick />
     </>
   );
 }
