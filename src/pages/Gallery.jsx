@@ -150,20 +150,31 @@ export default function Gallery() {
             </svg>
           </button>
 
-          {/* Image Container */}
+          {/* Container designed to prevent layout shifts */}
           <div
-            className="relative w-full h-full flex items-center justify-center p-4 sm:p-10"
+            className="flex items-center justify-center w-full h-full p-4 sm:p-10"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* 
+              Force consistent visual area:
+              - Use key={currentIndex} to trigger animation on image swap
+              - Use width: 90vw and height: 90vh to force upscaling/downscaling
+              - Use object-fit: contain to maintain aspect ratio
+            */}
             <img
+              key={currentIndex}
               src={images[currentIndex].src}
               alt="Gallery Full View"
-              className="max-w-full max-h-full object-contain shadow-2xl animate-imageZoom"
-              style={{ width: 'auto', height: 'auto', maxWidth: '95vw', maxHeight: '95vh' }}
+              className="object-contain shadow-2xl animate-imageZoom"
+              style={{
+                width: '90vw',
+                height: '90vh',
+                display: 'block'
+              }}
             />
 
             {/* Modal Description */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-center bg-black/40 px-6 py-2 rounded-full backdrop-blur-md text-sm sm:text-base max-w-[80vw]">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-center bg-black/60 px-6 py-2 rounded-full backdrop-blur-md text-sm sm:text-base max-w-[80vw] pointer-events-none">
               {images[currentIndex].desc}
             </div>
           </div>
