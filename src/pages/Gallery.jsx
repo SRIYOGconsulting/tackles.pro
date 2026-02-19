@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Helmet } from "react-helmet";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
 
 const image1 = "/gallery/image1.png";
 const image2 = "/gallery/image2.png";
@@ -17,8 +15,7 @@ const image11 = "/gallery/image11.png";
 const image12 = "/gallery/image12.png";
 
 export default function Gallery() {
-  const [lightbox, setLightbox] = useState(false);
-  const [imageSrc, setImageSrc] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(null);
 
   const images = [
     { src: image1, desc: "Fresh flooring and white paint paired with natural sunlight and cozy sofa setup." },
@@ -35,8 +32,37 @@ export default function Gallery() {
     { src: image12, desc: "Relaxing indoor setup with indoor plants, soft lighting, and stylish sofas." },
   ];
 
+  const handleOpen = (index) => {
+    setCurrentIndex(index);
+    document.body.style.overflow = "hidden";
+  };
+
+  const handleClose = useCallback(() => {
+    setCurrentIndex(null);
+    document.body.style.overflow = "auto";
+  }, []);
+
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
+  const handlePrev = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (currentIndex === null) return;
+      if (e.key === "ArrowRight") handleNext();
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "Escape") handleClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentIndex, handleNext, handlePrev, handleClose]);
+
   return (
-    <section className="min-h-screen bg-white py-20 px-6 text-gray-800 flex flex-col items-center">
+    <section className="min-h-screen bg-white py-16 px-6 text-gray-800 flex flex-col items-center">
       <Helmet>
         <title>Gallery | Tackles</title>
         <link rel="icon" type="image/png" href="/tackles.png" />
@@ -44,10 +70,10 @@ export default function Gallery() {
 
       {/* Header */}
       <div className="max-w-5xl text-center mb-14">
-        <h1 className="text-5xl font-extrabold text-emerald-900 mb-4 tracking-tight">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-emerald-900 mb-4 tracking-tight">
           Our Works
         </h1>
-        <p className="text-lg text-gray-600 leading-relaxed">
+        <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
           You can view our working quality and decide for yourselves whether
           we are best for you. All the repair and decoration work people
           find difficult comes naturally to our professionals.
@@ -55,31 +81,28 @@ export default function Gallery() {
       </div>
 
       {/* Gallery Grid */}
-      <div className="max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+      <div className="max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
         {images.map((item, index) => (
           <div
             key={index}
-            className="rounded-xl overflow-hidden bg-white border border-emerald-200 
-            shadow-[0_0_20px_rgba(6,95,70,0.18)] hover:shadow-[0_0_32px_rgba(6,95,70,0.28)]
-            transform hover:scale-[1.03] transition-all duration-500 group cursor-pointer"
-            onClick={() => {
-              setLightbox(true);
-              setImageSrc(item.src);
-            }}
+            className="rounded-xl overflow-hidden bg-white border border-emerald-100 
+            shadow-[0_0_20px_rgba(6,95,70,0.12)] hover:shadow-[0_0_32px_rgba(6,95,70,0.22)]
+            transform hover:scale-[1.02] transition-all duration-500 group cursor-pointer"
+            onClick={() => handleOpen(index)}
           >
             {/* IMAGE */}
-            <div className="relative">
+            <div className="relative aspect-[4/3]">
               <img
                 src={item.src}
                 alt={`Gallery ${index + 1}`}
                 loading="lazy"
-                className="w-full h-64 object-cover transition-all duration-300 group-hover:opacity-90"
+                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
               />
 
               {/* DESCRIPTION BAR */}
               <div
-                className="absolute bottom-0 left-0 w-full px-5 py-3 
-                bg-gradient-to-t from-emerald-900 via-emerald-800/90 to-transparent
+                className="absolute bottom-0 left-0 w-full px-5 py-4 
+                bg-gradient-to-t from-emerald-900/95 via-emerald-800/80 to-transparent
                 text-white text-sm opacity-0 group-hover:opacity-100 
                 translate-y-3 group-hover:translate-y-0
                 transition-all duration-300"
@@ -91,14 +114,80 @@ export default function Gallery() {
         ))}
       </div>
 
-      {/* Task 14: Render Lightbox */}
-      {lightbox && (
-        <Lightbox
-          open={lightbox}
-          slides={[{ src: imageSrc }]}
-          close={() => setLightbox(false)}
-        />
+      {/* CUSTOM FULL-SCREEN MODAL */}
+      {currentIndex !== null && (
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-sm animate-fadeIn"
+          onClick={handleClose}
+        >
+          {/* Close Button */}
+          <button
+            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[10000] p-2"
+            onClick={handleClose}
+          >
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Prev Button */}
+          <button
+            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-all z-[10000] p-4 group"
+            onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+          >
+            <svg className="w-10 h-10 sm:w-12 sm:h-12 transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Next Button */}
+          <button
+            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-all z-[10000] p-4 group"
+            onClick={(e) => { e.stopPropagation(); handleNext(); }}
+          >
+            <svg className="w-10 h-10 sm:w-12 sm:h-12 transform group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Image Container */}
+          <div
+            className="relative w-full h-full flex items-center justify-center p-4 sm:p-10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={images[currentIndex].src}
+              alt="Gallery Full View"
+              className="max-w-full max-h-full object-contain shadow-2xl animate-imageZoom"
+              style={{ width: 'auto', height: 'auto', maxWidth: '95vw', maxHeight: '95vh' }}
+            />
+
+            {/* Modal Description */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-center bg-black/40 px-6 py-2 rounded-full backdrop-blur-md text-sm sm:text-base max-w-[80vw]">
+              {images[currentIndex].desc}
+            </div>
+          </div>
+        </div>
       )}
+
+      <style>
+        {`
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+          @keyframes imageZoom {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+          }
+          .animate-fadeIn {
+            animation: fadeIn 0.3s ease-out forwards;
+          }
+          .animate-imageZoom {
+            animation: imageZoom 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          }
+        `}
+      </style>
     </section>
   );
 }
