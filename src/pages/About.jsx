@@ -114,7 +114,7 @@ export default function About() {
             <ShieldCheck size={32} className="text-emerald-700 mb-4" />
             <h3 className="font-semibold text-lg text-gray-900 mb-2">Safety</h3>
             <p className="text-sm text-gray-600 leading-relaxed">
-              All services are performed following strict safety protocols to protect clients,
+              All the services are performed following strict safety protocols to protect clients,
               technicians, and property while maintaining secure and well-organized work environments.
             </p>
           </div>
