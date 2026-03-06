@@ -10,7 +10,7 @@ const paintingImg = "/services/painting.png";
 const carpentryImg = "/services/carpentry.png";
 const flooringImg = "/services/flooring.png";
 const gutterImg = "/services/gutter.png";
-const pressureImg = "/services/pressure.png";
+const pressureImg = "/services/pressure.png";    
 const smartHomeImg = "/services/smart-home.png";
 
 export default function Services() {

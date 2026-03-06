@@ -76,7 +76,7 @@ export default function PrivacyPolicy() {
           {/* CARD 5 — THIRD PARTY TECH */}
           <div className="bg-white shadow-md border border-emerald-200 rounded-xl p-6 hover:shadow-lg transition-all">
             <h2 className="text-2xl font-bold text-emerald-900 mb-4">
-              Third-Party Tracking Technologies
+              Third - Party Tracking Technologies
             </h2>
             <p className="leading-relaxed">
               Third-party advertisers may use cookies, JavaScript, or tracking pixels. These

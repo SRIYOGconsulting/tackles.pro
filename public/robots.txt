@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
 Sitemap: https://www.tackles.pro/sitemap.xml
+
+
+
+

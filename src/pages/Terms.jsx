@@ -1,16 +1,12 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
 
 export default function Terms() {
   useEffect(() => {
     document.title = "Terms & Conditions | Tackles";
   }, []);
-
+   
   return (
     <div className="min-h-screen bg-white text-gray-800 py-16 px-6">
-      <Helmet>
-        <link rel="icon" type="image/png" href="/tackles.png" />
-      </Helmet>
       <div className="max-w-5xl mx-auto">
 
         {/* TITLE */}
@@ -20,7 +16,7 @@ export default function Terms() {
           </h1>
           <div className="h-1 w-full bg-emerald-700 rounded-full mt-3 shadow-sm"></div>
         </div>
-
+    
         {/* PAGE CONTENT */}
         <div className="space-y-10">
 
@@ -30,12 +26,12 @@ export default function Terms() {
               Welcome to Tackles
             </h2>
             <p className="leading-relaxed">
-              These terms and conditions outline the rules and regulations for the use of
+              These terms and conditions outline the rules and regulations for the use of 
               Tackles’s website, located at <span className="font-semibold text-emerald-800">tackles.ae</span>.
             </p>
             <p className="mt-3 leading-relaxed">
-              By accessing this website, we assume you accept these terms and conditions.
-              Do not continue to use Tackles if you do not agree with any of the terms
+              By accessing this website, we assume you accept these terms and conditions. 
+              Do not continue to use Tackles if you do not agree with any of the terms 
               stated on this page.
             </p>
           </div>
@@ -46,14 +42,14 @@ export default function Terms() {
               Terminology
             </h2>
             <p className="leading-relaxed">
-              The following terminology applies to these Terms and Conditions, Privacy
-              Statement, Disclaimer Notice and all Agreements: “Client”, “You” and “Your”
-              refer to you, the user. “The Company”, “Ourselves”, “We”, “Our” and “Us”,
-              refer to our Company. “Party”, “Parties”, or “Us”, refers to both the Client
+              The following terminology applies to these Terms and Conditions, Privacy 
+              Statement, Disclaimer Notice and all Agreements: “Client”, “You” and “Your” 
+              refer to you, the user. “The Company”, “Ourselves”, “We”, “Our” and “Us”, 
+              refer to our Company. “Party”, “Parties”, or “Us”, refers to both the Client 
               and ourselves.
             </p>
             <p className="mt-3 leading-relaxed">
-              Any use of singular, plural, capitalization, or gender-specific words are
+              Any use of singular, plural, capitalization, or gender-specific words are 
               interchangeable and refer to the same.
             </p>
           </div>
@@ -62,8 +58,8 @@ export default function Terms() {
           <div className="bg-white border border-emerald-200 shadow-md rounded-xl p-6 hover:shadow-lg transition">
             <h2 className="text-2xl font-bold text-emerald-900 mb-4">Cookies</h2>
             <p className="leading-relaxed">
-              We employ the use of cookies. By accessing Tackles, you agreed to use cookies
-              in agreement with Tackles’s Privacy Policy. Cookies help provide functionality
+              We employ the use of cookies. By accessing Tackles, you agreed to use cookies 
+              in agreement with Tackles’s Privacy Policy. Cookies help provide functionality 
               and enhance the user experience.
             </p>
           </div>
@@ -72,8 +68,8 @@ export default function Terms() {
           <div className="bg-white border border-emerald-200 shadow-md rounded-xl p-6 hover:shadow-lg transition">
             <h2 className="text-2xl font-bold text-emerald-900 mb-4">License</h2>
             <p className="leading-relaxed">
-              Unless otherwise stated, Tackles and/or its licensors own all intellectual
-              property rights for material on the website. You may access it for personal
+              Unless otherwise stated, Tackles and/or its licensors own all intellectual 
+              property rights for material on the website. You may access it for personal 
               use, subject to restrictions.
             </p>
 
@@ -85,7 +81,7 @@ export default function Terms() {
             </ul>
 
             <p className="mt-4 leading-relaxed">
-              Tackles does not moderate comments posted by users but reserves the right to
+              Tackles does not moderate comments posted by users but reserves the right to 
               remove any content deemed inappropriate or offensive.
             </p>
           </div>
@@ -131,7 +127,7 @@ export default function Terms() {
           <div className="bg-white border border-emerald-200 shadow-md rounded-xl p-6 hover:shadow-lg transition">
             <h2 className="text-2xl font-bold text-emerald-900 mb-4">iFrames</h2>
             <p className="leading-relaxed">
-              You may not create frames around our webpages without written permission.
+              You may not create frames around our webpages without written permission. 
               Such frames may alter our website’s appearance.
             </p>
           </div>
@@ -140,7 +136,7 @@ export default function Terms() {
           <div className="bg-white border border-emerald-200 shadow-md rounded-xl p-6 hover:shadow-lg transition">
             <h2 className="text-2xl font-bold text-emerald-900 mb-4">Content Liability</h2>
             <p className="leading-relaxed">
-              We are not responsible for content appearing on external websites. You agree
+              We are not responsible for content appearing on external websites. You agree 
               to defend us against all claims arising from your website.
             </p>
           </div>
@@ -149,12 +145,12 @@ export default function Terms() {
           <div className="bg-white border border-emerald-200 shadow-md rounded-xl p-6 hover:shadow-lg transition">
             <h2 className="text-2xl font-bold text-emerald-900 mb-4">Disclaimer</h2>
             <p className="leading-relaxed">
-              To the maximum extent permitted by law, we exclude all warranties and
-              representations regarding this website. Nothing in this disclaimer will limit
+              To the maximum extent permitted by law, we exclude all warranties and 
+              representations regarding this website. Nothing in this disclaimer will limit 
               liabilities that cannot be limited under applicable law.
             </p>
             <p className="mt-3 leading-relaxed">
-              As long as the website and its services are provided free of charge, we are
+              As long as the website and its services are provided free of charge, we are 
               not liable for any loss or damage of any nature.
             </p>
           </div>
@@ -163,3 +159,7 @@ export default function Terms() {
     </div>
   );
 }
+
+
+
+

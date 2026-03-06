@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
 
 // 👉 Replace these with your actual images
 // 👥 Team images (from public/teams)
@@ -12,7 +11,7 @@ const tom = "/team/tom.png";
 const bishnu = "/team/bishnu.png";
 const quiyam = "/team/quiyam.png";
 const sunil = "/team/sunil.png";
-
+              
 
 
 // Real icons
@@ -47,9 +46,6 @@ export default function Team() {
 
   return (
     <section className="min-h-screen bg-white py-20 px-6 text-gray-900">
-      <Helmet>
-        <link rel="icon" type="image/png" href="/tackles.png" />
-      </Helmet>
       <div className="max-w-6xl mx-auto text-center mb-16">
         <h1 className="text-5xl font-extrabold text-emerald-900 tracking-wide">
           Our Team
@@ -73,7 +69,6 @@ export default function Team() {
               <img
                 src={m.img}
                 alt={m.name}
-                loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
               />
 
