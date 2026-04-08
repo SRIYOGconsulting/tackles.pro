@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useLocation } from "../context/LocationContext.jsx";
-import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const logo = "/logo/logo.png";
 
@@ -26,7 +26,7 @@ export default function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, [menuOpen]);
 
-  // Lock body scroll and toggle class when menu is open
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
@@ -52,7 +52,6 @@ export default function Header() {
     document.title = `Tackles Handyman Services ${location}`;
   }, [location]);
 
-  const handleLocationClick = (loc) => setLocation(loc);
   const closeMenu = () => setMenuOpen(false);
 
   const navLinks = [
@@ -65,42 +64,23 @@ export default function Header() {
 
   return (
     <>
-      {/* UPDATE: Clean Top Bar */}
-      <div className="bg-emerald-900 text-white py-2 text-xs sm:text-sm font-medium">
-        <div className="container mx-auto px-4 md:px-6 flex flex-col sm:flex-row justify-between items-center gap-2">
-
-          <div className="flex items-center gap-4 sm:gap-6 opacity-90">
-            <a href="tel:055-6185029" className="flex items-center gap-2 hover:text-emerald-300 transition-colors">
-              <Phone size={14} />
-              <span>055-6185029</span>
-            </a>
-            <a href="mailto:info@tackles.pro" className="flex items-center gap-2 hover:text-emerald-300 transition-colors">
-              <Mail size={14} />
-              <span>info@tackles.pro</span>
-            </a>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <MapPin size={14} className="opacity-80" />
-            <div className="flex gap-1">
-              {["Dubai", "San Francisco", "Sydney"].map((loc) => (
-                <button
-                  key={loc}
-                  onClick={() => handleLocationClick(loc)}
-                  className={`px-2 py-0.5 rounded transition-colors ${location === loc
-                    ? "bg-white text-emerald-900 font-bold"
-                    : "hover:bg-emerald-800 text-emerald-100"
-                    }`}
-                >
-                  {loc}
-                </button>
-              ))}
-            </div>
-          </div>
+      {/* 🚨 GREEN NOTIFICATION BAR */}
+      <div className="bg-emerald-600 text-white py-3 text-sm font-medium shadow-md z-50">
+        <div className="container mx-auto px-4 md:px-6 flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
+          <span className="leading-relaxed">
+            Welcome to Tackles, we have moved our services only to San Francisco and offering{" "}
+            <span className="font-bold">15% discount</span> for the first order.
+          </span>
+          <button
+            onClick={() => navigate("/book")}
+            className="bg-white text-emerald-700 hover:bg-emerald-100 font-semibold px-5 py-1.5 rounded-full text-sm transition-all duration-200 whitespace-nowrap shadow-sm hover:shadow active:scale-95"
+          >
+            Book a Service
+          </button>
         </div>
       </div>
 
-      {/* UPDATE: Main Navigation */}
+      {/* Main Navigation */}
       <header
         className={`sticky top-0 z-50 bg-white transition-all duration-300 ${scrolled ? "shadow-md py-2" : "shadow-sm py-3"
           }`}
@@ -148,7 +128,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* UPDATE: Mobile Side Drawer */}
+      {/* Mobile Side Drawer */}
       <div
         className={`fixed inset-0 z-50 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${menuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
           }`}

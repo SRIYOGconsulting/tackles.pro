@@ -31,6 +31,7 @@ import Feedback from "./pages/Feedback.jsx";
 // ⭐ NEW — Blog Pages
 import Blog from "./pages/Blog.jsx";
 import BlogPost from "./pages/BlogPost.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 
 // 🧭 Router setup
 const router = createBrowserRouter([
@@ -64,6 +65,9 @@ const router = createBrowserRouter([
       // ⭐ NEW — Blog Routes
       { path: "/blog", element: <Blog /> },
       { path: "/blog/:slug", element: <BlogPost /> },
+
+      { path: "/privacypolicy", element: <PrivacyPolicy /> },
+     
     ],
   },
 ]);

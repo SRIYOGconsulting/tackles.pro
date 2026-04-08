@@ -8,7 +8,7 @@ export default function Hero() {
           Your Trusted Handyman Professionals
         </h1>
         <p className="mt-4 max-w-2xl text-gray-700">
-          Fast, reliable repairs and improvements in Dubai, Sydney & San Francisco.
+          Fast, reliable repairs and improvements in San Francisco.
         </p>
         <div className="mt-6 flex gap-3">
           <Link to="/contact" className="bg-emerald-700 text-white px-4 py-2 rounded-md">Book a Handyman</Link>

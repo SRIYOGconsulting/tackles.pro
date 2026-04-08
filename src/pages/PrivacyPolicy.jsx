@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
         {/* TITLE SECTION */}
         <div className="mb-12">
           <h1 className="text-4xl font-extrabold text-emerald-900 tracking-wide">
-            Privacy 
+            Privacy
           </h1>
           <div className="h-1 w-full bg-emerald-700 rounded-full mt-3 shadow-sm"></div>
         </div>
