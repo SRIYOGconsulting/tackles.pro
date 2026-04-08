@@ -207,7 +207,7 @@ export default function Footer() {
           Built with :{" "}
           <span className="text-emerald-300 font-semibold tracking-wide">
             <a
-              href="https://broadpress.com"
+              href="https://broadpress.org"
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-300 font-semibold tracking-wide hover:underline"
