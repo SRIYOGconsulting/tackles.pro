@@ -5,13 +5,13 @@ import { useLocation } from "../context/LocationContext";
 
 // 🌆 Background / section images
 const aboutImg = "/about/about.png";
-const sanfranciscoImg = "/animationpicture/sanfrancisco.avif";
-const acBgImg = "/animationpicture/ac.png";
-const paintImg = "/animationpicture/paint.jpg";
+const sanfranciscoImg = "/home/hero/electrician.jpg";
+const acBgImg = "/home/hero/carpenter.jpg";
+const paintImg = "/home/hero/cleaner.jpg";
 
 // 🧰 Service images
 const acImg = "/services/ac-service.png";
-const electricalImg = "/services/electrical.png";
+const electricalImg = "/home/hero/electrician.jpg";
 const plumbingImg = "/services/plumbing.png";
 
 // ⭐ App download buttons
@@ -38,20 +38,19 @@ const Home = () => {
   const slides = [
     {
       id: 1,
-      title: `Hire a Plumber in ${displayLocation}`,
-      subtitle: "Professional service marketplace",
-      image: sanfranciscoImg,
+      title: `Hire an Electrician in ${displayLocation}`,
+      subtitle: "Insured & Certified Electricians.",
     },
     {
       id: 2,
-      title: `AC Maintenance in ${displayLocation}`,
-      subtitle: "Repair, Shifting & Cleaning",
+      title: `Hire a Carpenter in ${displayLocation}`,
+      subtitle: "Expert carpentry services for furniture repair, woodwork, installation and custom design.",
       image: acBgImg,
     },
     {
       id: 3,
-      title: `Painting Services in ${displayLocation}`,
-      subtitle: "Color Therapy for your space",
+      title: `Hire a Cleaner in ${displayLocation}`,
+      subtitle: " Certified Cleaners - Sparkling Results",
       image: paintImg,
     },
   ];
@@ -161,11 +160,11 @@ const Home = () => {
             </p>
 
             <p className="text-sm sm:text-base text-gray-900 max-w-md">
-              From urgent repairs to planned upgrades, our verified professionals in{" "}
+              Certified electricians for wiring, repair, installation and emergency electrical services{" "}
               <span className="font-semibold text-emerald-900">
                 {displayLocation}
               </span>{" "}
-              handle it all on time with clean finishing and clear pricing.
+              emergency electrical services.
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-3">
@@ -377,7 +376,7 @@ const Home = () => {
 
       {/* Floating Social Icons */}
         <div className="floating-socials fixed right-6 bottom-[5%] flex flex-col items-center gap-3 z-50">
-          <a href="https://d.sriyog.com/gSewa" target="_blank" rel="noopener noreferrer"
+          <a href="https://.com/gSewa" target="_blank" rel="noopener noreferrer"
             className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform hover:shadow-green-400/60"
           >
             <svg viewBox="0 0 24 24" fill="white" className="w-5 h-5">
