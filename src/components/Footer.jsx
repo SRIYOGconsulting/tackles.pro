@@ -5,10 +5,10 @@ const logo = "/logo/logo.png";
 
 export default function Footer() {
   const socialLinks = [
-    { icon: Facebook, href: "https://www.facebook.com/TacklesTechnical", label: "Facebook" },
-    { icon: Linkedin, href: "https://www.linkedin.com/company/tackles", label: "LinkedIn" },
-    { icon: Youtube, href: "https://www.youtube.com/@TacklesTechnical", label: "YouTube" },
-    { icon: Github, href: "https://github.com/tackles", label: "GitHub" },
+    { icon: Facebook, href: "https://www.facebook.com/sriyog", label: "Facebook" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/sriyog/", label: "LinkedIn" },
+    { icon: Youtube, href: "https://www.youtube.com/@biratinfo", label: "YouTube" },
+    { icon: Github, href: "https://github.com/sriyogconsulting/tackles.pro", label: "GitHub" },
   ];
 
   return (

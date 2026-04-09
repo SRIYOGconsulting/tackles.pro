@@ -26,7 +26,7 @@ const blogContent = {
     "how-to-maintain-your-ac-for-maximum-efficiency": {
         content: `
       <h2>Why AC Maintenance Matters</h2>
-      <p>Your air conditioning system works hard, especially in hot climates like Dubai. Regular maintenance not only keeps your energy bills low but also extends the life of your unit by 5-10 years.</p>
+      <p>Your air conditioning system works hard, especially in hot climates like San Francisco. Regular maintenance not only keeps your energy bills low but also extends the life of your unit by 5-10 years.</p>
       
       <h2>Clean or Replace Filters Monthly</h2>
       <p>Dirty filters restrict airflow and force your AC to work harder. During heavy use months, check your filters every 2-4 weeks. A clean filter can reduce your AC's energy consumption by 5-15%.</p>
