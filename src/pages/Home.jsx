@@ -10,9 +10,9 @@ const acBgImg = "/home/hero/carpenter.jpg";
 const paintImg = "/home/hero/cleaner.jpg";
 
 // 🧰 Service images
-const acImg = "/services/ac-service.png";
-const electricalImg = "/home/hero/electrician.jpg";
-const plumbingImg = "/services/plumbing.png";
+const acImg = "/home/services/painting.jpg";
+const electricalImg = "/home/services/flooring.jpg";
+const plumbingImg = "/home/services/pressure.png";
 
 // ⭐ App download buttons
 const playstoreBtn = "/appdownload/playstore.png";
@@ -257,7 +257,7 @@ const Home = () => {
       {/* SERVICES SECTION */}
       <section className="bg-white py-20 px-6 sm:px-12 lg:px-20 text-center">
         <h2 className="text-4xl font-extrabold text-emerald-900 mb-4">
-          What Can We Do?
+          High Demand Services
         </h2>
 
         <p className="text-gray-700 text-lg mb-12">
@@ -267,7 +267,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <ServiceCard
             image={acImg}
-            title="AC Maintenance & Servicing"
+            title="AC Maintenance"
             desc="Complete AC servicing including cleaning, gas refilling, and system performance checks."
             extra={<BookButton />}
           />
