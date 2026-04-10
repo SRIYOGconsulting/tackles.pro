@@ -64,18 +64,18 @@ export default function Header() {
 
   return (
     <>
-      {/* 🚨 GREEN NOTIFICATION BAR */}
+      {/* GREEN NOTIFICATION BAR */}
       <div className="bg-emerald-600 text-white py-3 text-sm font-medium shadow-md z-50">
         <div className="container mx-auto px-4 md:px-6 flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
           <span className="leading-relaxed">
-            Welcome to Tackles, we have moved our services only to San Francisco and offering{" "}
-            <span className="font-bold">15% discount</span> for the first order.
+            Welcome to Tackles, offering{" "}
+            <span className="font-bold">15% discount</span> for the first order in San Francisco.
           </span>
           <button
             onClick={() => navigate("/book")}
             className="bg-white text-emerald-700 hover:bg-emerald-100 font-semibold px-5 py-1.5 rounded-full text-sm transition-all duration-200 whitespace-nowrap shadow-sm hover:shadow active:scale-95"
           >
-            Book a Service
+            Grab this Offer
           </button>
         </div>
       </div>
@@ -113,7 +113,7 @@ export default function Header() {
               onClick={() => navigate("/book")}
               className="ml-4 px-5 py-2.5 rounded-lg bg-emerald-700 text-white font-semibold text-sm hover:bg-emerald-800 transition-all shadow-sm hover:shadow-md active:scale-95"
             >
-              Book a service
+              Book a Service
             </button>
           </nav>
 
@@ -176,7 +176,7 @@ export default function Header() {
                 }}
                 className="w-full py-3.5 rounded-xl bg-emerald-700 text-white font-semibold shadow-md active:scale-95 transition-all text-center"
               >
-                Book a service
+                Book a Service
               </button>
             </div>
           </div>

@@ -3,27 +3,27 @@ import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "../context/LocationContext";
 
-// 🌆 Background / section images
+// Background / section images
 const aboutImg = "/about/about.png";
-const sanfranciscoImg = "/home/hero/electrician.jpg";
+const electImg = "/home/hero/electrician.jpg";
 const acBgImg = "/home/hero/carpenter.jpg";
 const paintImg = "/home/hero/cleaner.jpg";
 
-// 🧰 Service images
+// Service images
 const acImg = "/home/services/painting.jpg";
 const electricalImg = "/home/services/flooring.jpg";
-const plumbingImg = "/home/services/pressure.png";
+const plumbingImg = "/home/services/pressure.jpg";
 
-// ⭐ App download buttons
-const playstoreBtn = "/appdownload/playstore.png";
-const appleBtn = "/appdownload/apple.png";
+// App download buttons
+const playstoreBtn = "/icons/google-play.svg";
+const appleBtn = "/icons/app-store.svg";
 
-// 👤 Testimonial images
+// Testimonial images
 const sameerImg = "/hometestimonials/sameer.png";
 const jaxonImg = "/hometestimonials/jaxon.png";
 const joaoImg = "/hometestimonials/joao.png";
 
-// 🧱 Component
+// Component
 import ServiceCard from "../components/ServiceCard.jsx";
 
 const Home = () => {
@@ -34,17 +34,18 @@ const Home = () => {
 
   const displayLocation = "San Francisco";
 
-  // 🌇 Slides (San Francisco only)
+  // Slides (San Francisco only)
   const slides = [
     {
       id: 1,
       title: `Hire an Electrician in ${displayLocation}`,
       subtitle: "Insured & Certified Electricians.",
+      image: electImg,
     },
     {
       id: 2,
       title: `Hire a Carpenter in ${displayLocation}`,
-      subtitle: "Expert carpentry services for furniture repair, woodwork, installation and custom design.",
+      subtitle: "Expert Furniture Repair",
       image: acBgImg,
     },
     {
@@ -267,21 +268,21 @@ const Home = () => {
         <div className="max-w-7xl mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <ServiceCard
             image={acImg}
-            title="AC Maintenance"
-            desc="Complete AC servicing including cleaning, gas refilling, and system performance checks."
+            title="Painting"
+            desc="Visualizing your dream space? Our expert painters bring it to life with precision and care."
             extra={<BookButton />}
           />
 
           <ServiceCard
             image={electricalImg}
-            title="Electrical Repairs"
-            desc="Professional electrical repair covering switches, wiring, fixtures, and safety inspections."
+            title="Flooring"
+            desc="Professional flooring installation and repair services for all types of materials."
             extra={<BookButton />}
           />
 
           <ServiceCard
             image={plumbingImg}
-            title="Plumbing"
+            title="Pressure Cleaning"
             desc="Reliable plumbing service for leak repairs, pipe maintenance, and smooth water flow."
             extra={<BookButton />}
           />
