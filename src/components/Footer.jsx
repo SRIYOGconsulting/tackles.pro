@@ -97,7 +97,7 @@ export default function Footer() {
                 { name: "Testimonials", href: "/testimonials" },
                 { name: "FAQs", href: "/faq" },
                 { name: "Blog", href: "https://" },
-                { name: "Privacy Policy", href: "/privacy-policy" },
+                { name: "Privacy Policy", href: "/privacy" },
                 { name: "Terms of Service", href: "/terms" },
                 { name: "Disclaimer", href: "/disclaimer" },
               ].map((item) => (
@@ -123,9 +123,9 @@ export default function Footer() {
             <h4 className="text-lg font-semibold text-white mb-4">Services</h4>
             <ul className="space-y-2">
               {[
-                "Handiman/Small repairs",
+                "Handyman/ Small Repairs",
                 "Cleaning & Deep Cleaning",
-                "Plumbing",
+                "Plumbing Repair",
                 "Electrical Repairs",
                 "Moving & Furniture",
                 "Assembly",
@@ -200,7 +200,7 @@ export default function Footer() {
       "
       >
         <p className="leading-relaxed">
-          © 2018 - 2026 Tackles Technical. All Rights Reserved.
+          © 2018 - 2026 Tackles Pro. All Rights Reserved.
         </p>
 
         <p className="mt-2 sm:mt-0 leading-relaxed">
